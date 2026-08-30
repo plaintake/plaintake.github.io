@@ -4,6 +4,48 @@
 GitHub release notes, so this file is the source of what a customer reads — not a summary
 written afterwards.
 
+## 0.2.0
+
+This release adds a camera that follows declared step targets and makes human approval a
+first-class part of a recorded browser flow.
+
+**Target-driven camera.** Pro recordings can use `--camera zoom` to ease toward the same
+rectangles already declared for steps and the synthetic cursor. The shot list is computed in
+TypeScript and frozen into the render plan, so FFmpeg executes literal crop geometry and a
+re-render stays byte-identical on the same architecture and FFmpeg build. The camera never
+chooses what to show: steps without targets do not move it. Captions and closing cards remain
+outside the crop, and `--camera off` preserves the full viewport.
+
+**Smoother motion.** Camera transitions now use an 800 ms cosine ease with even-pixel
+intermediate crop geometry, avoiding visible zoom rungs while keeping yuv420p-compatible
+frames and exact held endpoints. Cursor safety shifts the crop without changing its zoom,
+which prevents a moving pointer from causing the frame to pulse.
+
+**Human-in-the-loop recording.** A scenario can declare `handoff: 'preflight'` to let a person
+sign in or solve a challenge before recording and tracing begin, or `handoff: 'session'` when
+the decision belongs in the demo itself. The visible browser is handed to the person; the
+prompt returns only a completion choice, never credentials or codes. Interactive recordings
+omit the Playwright trace so account fields, cookies, and request bodies are not bundled.
+Clients that support MCP elicitation can relay the completion prompt in chat; other clients
+are refused before Chromium starts.
+
+**Cursor and click feedback.** The optional synthetic pointer continues to be rendered from
+the frozen step targets, now framed by the same camera path. Click ripples land before the UI
+change so the action reads as the cause of the transition.
+
+**New release demo.** The public demo now walks through preparing version 0.2.0, requesting a
+human review, approving it in the visible browser, and returning to the verified final state.
+It is an 18-second, 1920×1080, 30 fps H.264 video with hard captions and no audio.
+
+### Known limitations
+
+- The camera is Pro-only, capped at 1.6×, and its shot list is frozen while recording; it
+  cannot be added later to a camera-less bundle by re-rendering.
+- A `session` handoff is filmed exactly as it happens. Use `preflight` for authentication that
+  should appear in neither the video nor the trace.
+- Interactive timing is a human input, so the capture is not reproducible; re-rendering the
+  resulting frozen bundle remains reproducible under the usual toolchain constraints.
+
 ## 0.1.0
 
 First release.
@@ -11,27 +53,6 @@ First release.
 **Recording.** A committed TypeScript scenario drives a real Chromium through Playwright and
 produces a narrated video. Steps, waits, masks and chapters are declared in the scenario; no
 recording is done by hand and no take is edited.
-
-**Apps behind a login.** A scenario can stop and hand you the real browser window — to sign in,
-solve a CAPTCHA, or complete a step-up challenge — and carry on once you are done. Put that in
-`preflight` and it happens **before** recording starts, so the sign-in is in neither the video
-nor the trace; a `session` handoff waits with the camera running, for a challenge that is
-genuinely part of the demo.
-
-You act in the browser, not in PlainTake. It never asks for a password, a code, or anything else
-secret, and there is nowhere for one to go if you tried: the only thing the prompt sends back is
-*done*, *gave up*, or *never mind*. A recording that hands the browser over also records no
-Playwright trace at all, because a trace captures every field value — password fields included —
-along with request bodies and cookies, and a bundle of your logged-in session is not something to
-produce by accident.
-
-It needs a visible browser window and a terminal, so it runs from `plaintake run` or the menu.
-Over MCP, with `--fixture`, or in a pipe it is refused immediately, before anything opens — being
-turned away *after* you have solved a CAPTCHA is the thing this is built to avoid.
-
-There is also `demo.waitFor()`, which waits for a condition and prompts nobody: a push notification
-approved on a phone, a link clicked in an email, a background job finishing. That one needs no
-window and no terminal, so it works in CI.
 
 **Output.** Every run produces one video, `demo.mp4`, plus `captions.srt`, `captions.vtt` and
 `captions.ass` beside it. Captions are burned in with libass by default, because PlainTake
@@ -45,15 +66,6 @@ roughly even rather than one full line and one stray word. The plate is there be
 PlainTake mostly records light interfaces, where outlined text is hardest to read; measured on
 the bundled example, the weakest part of an outlined caption had a local contrast of 25
 against 170 for the plate.
-
-**An optional mouse cursor.** `--cursor on` draws a pointer that glides between the
-scenario's step targets and ripples where a step clicks — the ripple begins before the
-screen change the click causes, so the press reads as the cause of what follows; the
-default is off, and it is free
-on every tier. The cursor is drawn at render time by libass from the recording's frozen
-plan, exactly as the captions are, so a re-render reproduces it byte-for-byte — Playwright's
-own action highlighting is deliberately unused, because it would inject frames that differ
-between runs.
 
 **An evidence bundle, not just a file.** Each recording keeps the scenario source, the raw
 capture, the Playwright trace, a semantic event timeline, the exact render plan, the toolchain
@@ -88,17 +100,4 @@ what you make.
   does not.
 - Chromium is downloaded once, separately, with `plaintake install-browser`.
 - Chapter markers come only from `demo.chapter()`; they are never synthesised from step titles.
-- The cursor is synthetic: one shape with click ripples, generated from step targets. It is
-  not a recording of your real mouse, and `off` (the default) films no pointer at all.
-- **A `session` handoff is filmed.** There is no pause, no resume and nothing cut out, so a code
-  the page shows in the clear while you work is in the finished video. `preflight` is the mode
-  that avoids this, and it is the one to reach for. `demo.mask()` covers a field you name and
-  nothing else — not a toast, not the URL bar.
-- Handing the browser over needs a visible window and a terminal. It is refused over MCP, with
-  `--fixture`, and in a pipe. A recording made that way is not reproducible either — your timing
-  is an input to it — though re-rendering the bundle afterwards is as reproducible as any other.
-- A handoff opens a *headed* browser, which renders text on slightly different pixels than the
-  headless one and requests `/favicon.ico`. An app without a favicon logs a 404 that fails the
-  run; `logs/recorder.log` says so on every interactive run, and `allowedConsoleErrors` is where
-  to silence it.
 - Nothing prunes old recordings automatically. The Recordings panel deletes one when you ask.

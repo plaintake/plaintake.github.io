@@ -82,7 +82,7 @@ Intel build.
 
 ```bash
 # 1. Download the tarball for your platform, the checksums, and the installer
-VERSION=0.1.0
+VERSION=0.2.0
 BASE=https://github.com/plaintake/plaintake/releases/download/v$VERSION
 curl -LO $BASE/plaintake-$VERSION-darwin-arm64.tar.gz   # or -linux-x64
 curl -LO $BASE/SHA256SUMS
@@ -151,6 +151,7 @@ exit — so an agent running `plaintake` never sits waiting on a prompt.
 plaintake validate <scenario.ts>
 plaintake run      <scenario.ts> --output <dir> (--base-url <url> | --fixture)
                                   [--subtitles hard|soft] [--cursor on|off]
+                                  [--camera off|zoom]
 plaintake render   <bundleDir> [--subtitles hard|soft]
 plaintake verify   <bundleDir>
 plaintake inspect  <bundleDir>
@@ -174,6 +175,13 @@ plaintake --version
 `--cursor on` draws a pointer that glides between the scenario's targets and ripples on
 clicks; `off`, the default, records none. It is drawn when the video is rendered, from the
 recording's frozen plan, so two renders of the same recording stay byte-identical.
+
+`--camera zoom` (Pro) eases the frame in on whatever each step already targets, so the button
+being clicked fills the screen instead of sitting in a corner of a full-page shot. The path is
+computed from the recorded steps — the same ones the captions and chapters come from — and
+frozen into the plan alongside them, so it is as repeatable as everything else here and no
+model chose it. `off`, the default, films the raw viewport. Captions and the closing card
+never zoom either way.
 
 Add `--json` to any command for a machine-readable result on stdout. Diagnostics always go to
 stderr, and the two are never mixed.
@@ -278,8 +286,8 @@ also stores **no Playwright trace at all**, because a trace captures every field
 password fields included — along with request bodies and cookies.
 
 It needs a visible browser window and a terminal, so run it with `plaintake run` or from the
-menu. With `--fixture`, over MCP, or in a pipe it is refused straight away, before anything
-opens.
+menu. With `--fixture` or in a pipe it is refused straight away, before anything opens — over
+MCP it depends on the client, and the next section says which kind works.
 
 There is also `demo.waitFor({ id, title, until })`, which waits for something to happen and
 prompts nobody — a push notification you approve on your phone, a link in an email, a background
@@ -314,14 +322,26 @@ args = ["mcp", "--workspace", "/abs/path/to/your/project"]
 `--workspace` is a sandbox root: every path a tool accepts must resolve beneath it, and
 traversal, absolute paths outside it and symlink escapes are all refused.
 
+It is optional: omitted, the root is the server's cwd — the directory the client launched
+from, which in Claude Code is your project — so a config shared across projects can omit it
+and follow the client. Pass it when the client may spawn the server from somewhere
+unrelated, or to pin the root explicitly. It constrains file paths only; the recorded app
+is chosen per call by `demo_run`'s `baseURL` or `fixture`.
+
 ⚠️ **Scenario files are executed as code** by `validate` and `run`. The sandbox constrains
 which paths the tools accept, not what a loaded scenario may do. Treat a scenario file exactly
 as you would treat a test file in the same repository, and do not point the tools at a
 directory whose contents you would not run.
 
-A demo that declares `handoff` **needs a visible browser window and a terminal**, so an agent
-cannot run one — it is refused immediately, and the tool description says so. The agent can
-validate, render and verify the recording; starting it is yours.
+A demo that declares `handoff` **needs a visible browser window and a terminal** — and whether
+an agent can run one depends on its client. The server is local, so the window opens on your
+screen either way. A client that supports elicitation relays the question into the chat: it
+tells you the window is open, you do the sign-in or the CAPTCHA in the browser, and you answer
+*done* in the chat when you are. The question carries a single checkbox and nothing else, so
+there is still nowhere to type a secret — the agent can validate, run, render and verify the
+whole recording. A client without elicitation is refused immediately, with nothing launched,
+and starting the recording is yours: run `plaintake run` in a terminal. The tool description
+says which case you are in.
 
 ## What a recording contains
 
@@ -357,6 +377,7 @@ Recordings panel in the menu is how you do that.
 | Your own outro text and colours | ❌ | ✅ |
 | MP4 chapter markers from `demo.chapter()` | ❌ | ✅ |
 | Selectable caption track instead of burned-in | ❌ | ✅ |
+| Camera that zooms toward each step's target | ❌ | ✅ |
 | Price | free | one-time, perpetual |
 
 **Buy a licence: [plainlab.gumroad.com/l/plaintake](https://plainlab.gumroad.com/l/plaintake)** —
@@ -368,6 +389,11 @@ install it on as many of your own machines as you need.
 
 **Chapter events are recorded on every tier.** Only the markers in the MP4 are withheld, so
 nothing is lost by recording on Free and activating later — re-render and the chapters appear.
+
+**The camera is the one thing that does not work that way,** and it is better said here than
+found out later: the shot list is worked out and frozen while the recording is made, so a
+recording made on Free has none, and re-rendering it cannot add one. If you want the zoom on
+a demo you already recorded, record it again.
 
 **The caption files are written on every tier** too. `captions.srt` and `captions.vtt` sit
 beside the video whatever you paid, so a `<track>` tag or a translation source needs no
@@ -388,6 +414,11 @@ Stated up front rather than discovered later:
 - **The cursor is optional and synthetic.** `--cursor on` draws one pointer shape with click
   ripples, generated from the scenario's targets — it is not your real mouse, there are no
   styles to configure, and `off` (the default) films none.
+- **The camera zooms, and that is all it does.** `--camera zoom` crops toward the rect a step
+  already targets and eases between shots. It never decides *what* is interesting — no
+  saliency, no model, no scene detection — so a step with no target moves nothing. The zoom is
+  upscaled from the same 1920×1080 capture, so it is capped at 1.6× before the text turns to
+  mush, and it costs render time. `off` is the default and films the raw viewport.
 - **Captions are written by you**, never transcribed.
 - **Chapter markers come only from `demo.chapter()`** — never invented from step titles.
 - **A `session` handoff is filmed.** No pause, no resume, nothing cut out — so a code the page
