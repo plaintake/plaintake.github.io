@@ -46,6 +46,9 @@ afterwards. Fourth frame: the closing card the free tier adds.
 The caption file and manifest for those frames are in
 [`docs/samples/create-api-key/`](docs/samples/create-api-key/).
 
+More videos made with PlainTake are on
+[YouTube](https://www.youtube.com/@plainlabdev).
+
 ---
 
 ## Before you install
@@ -89,7 +92,7 @@ Intel build.
 
 ```bash
 # 1. Download the tarball for your platform, the checksums, and the installer
-VERSION=1.0.0
+VERSION=1.1.0
 BASE=https://github.com/plaintake/plaintake/releases/download/v$VERSION
 curl -LO $BASE/plaintake-$VERSION-darwin-arm64.tar.gz   # or -linux-x64
 curl -LO $BASE/SHA256SUMS
