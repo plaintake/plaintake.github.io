@@ -1,36 +1,36 @@
 WEBVTT
 
 open-release-desk
-00:00:04.600 --> 00:00:08.078
+00:00:00.000 --> 00:00:03.478
 Start with the release
 workspace in a real browser.
 
 prepare-release
-00:00:08.158 --> 00:00:12.058
+00:00:03.558 --> 00:00:07.458
 The synthetic pointer moves
 to each declared target.
 
 enter-version
-00:00:12.138 --> 00:00:15.813
+00:00:07.538 --> 00:00:11.213
 Camera zoom follows the
 same target rectangle.
 
 request-approval
-00:00:15.893 --> 00:00:19.318
+00:00:11.293 --> 00:00:14.718
 Submit the release for
 a final human decision.
 
 frame-human-review
-00:00:19.398 --> 00:00:23.148
+00:00:14.798 --> 00:00:18.548
 PlainTake hands the visible
 browser to a person.
 
 approve-release
-00:00:25.986 --> 00:00:30.390
+00:00:21.386 --> 00:00:25.790
 The person approves, and the
 recorded scenario can continue.
 
 show-approved-state
-00:00:30.470 --> 00:00:34.220
+00:00:25.870 --> 00:00:29.620
 The final state is visible
 and ready to verify.
