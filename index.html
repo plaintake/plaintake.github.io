@@ -57,7 +57,7 @@
           "sameAs": ["https://www.youtube.com/@plainlabdev"]
         },
         "operatingSystem": "macOS, Linux",
-        "softwareVersion": "1.2.1",
+        "softwareVersion": "1.3.0",
         "description": "A local developer tool that records replayable Chromium demo videos from TypeScript scenarios and renders captioned MP4 files with FFmpeg.",
         "url": "https://plaintake.github.io/",
         "downloadUrl": "https://github.com/plaintake/plaintake/releases/latest",
@@ -110,7 +110,7 @@
             <a class="button button--primary button--small" href="https://github.com/plaintake/plaintake/releases/latest">Download</a>
           </nav>
 
-          <a class="button button--primary button--small nav__mobile-cta" href="https://github.com/plaintake/plaintake/releases/latest" aria-label="Download PlainTake 1.2.1">Download</a>
+          <a class="button button--primary button--small nav__mobile-cta" href="https://github.com/plaintake/plaintake/releases/latest" aria-label="Download PlainTake 1.3.0">Download</a>
         </div>
       </header>
 
@@ -126,7 +126,7 @@
               <span aria-hidden="true" data-type-command="plaintake run demo.ts"></span>
             </p>
             <div class="hero__actions">
-              <a class="button button--primary" href="https://github.com/plaintake/plaintake/releases/latest">Download 1.2.1</a>
+              <a class="button button--primary" href="https://github.com/plaintake/plaintake/releases/latest">Download 1.3.0</a>
               <a class="button" href="https://plainlab.gumroad.com/l/plaintake">Buy Pro</a>
             </div>
             <p class="hero__note">Free for commercial use. No account. No cloud renderer. More demo videos on <a href="https://www.youtube.com/@plainlabdev">YouTube</a>.</p>
@@ -220,7 +220,7 @@
               <li>
                 <div>
                   <strong>Render once with FFmpeg</strong>
-                  <span>Hard captions are the default, with SRT and VTT sidecars always included.</span>
+                  <span>A selectable caption track by default, burned-in on request, with SRT and VTT sidecars always included.</span>
                 </div>
               </li>
               <li>
@@ -303,7 +303,7 @@
         <section class="section container pricing" id="free-pro">
           <h2>Free records everything. Pro changes the finish.</h2>
           <p class="pricing__intro">
-            Both tiers produce videos you own. Free keeps a three-second PlainTake credit. Pro removes it and adds distribution controls.
+            Both tiers produce videos you own, with every recording and caption feature. Free keeps a three-second PlainTake credit. Pro is the polish pass: it removes the credit and adds the finishing touches.
           </p>
 
           <article class="tier">
@@ -313,7 +313,9 @@
             </div>
             <ul>
               <li>Every recording, rendering, CLI, and MCP feature</li>
-              <li>Hard captions plus SRT and VTT files</li>
+              <li>A selectable caption track, or captions burned into the pixels</li>
+              <li>SRT and VTT sidecar files on every run</li>
+              <li>Narrate every caption — a local voice model or your own audio</li>
               <li>Three-second “Made with PlainTake” closing credit</li>
             </ul>
             <a class="button tier__action" href="https://github.com/plaintake/plaintake/releases/latest">Download free</a>
@@ -325,11 +327,9 @@
               <p>One-time licence</p>
             </div>
             <ul>
-              <li>Remove the PlainTake closing credit</li>
-              <li>Set your own outro text and colours</li>
-              <li>Add MP4 chapter markers and a selectable caption track</li>
+              <li>MP4 chapter markers to skip between steps</li>
               <li>Zoom the camera toward each declared step target</li>
-              <li>Narrate every caption — a local voice model or your own audio</li>
+              <li>Your video without our credit — or your own outro text and colours</li>
             </ul>
             <a class="button button--primary tier__action" href="https://plainlab.gumroad.com/l/plaintake">Buy Pro</a>
           </article>
@@ -341,7 +341,7 @@
 
           <details>
             <summary>Does PlainTake record audio?</summary>
-            <p>Optionally. --speech on reads each caption aloud with a voice model that runs on your own machine — no network, no account, no API key — and --speech file speaks WAV recordings you supply. Hard captions remain the default either way, because they stay visible in browsers, social feeds, and documentation embeds. Narration is a Pro feature.</p>
+            <p>Optionally, and free on every tier. --speech on reads each caption aloud with a voice model that runs on your own machine — no network, no account, no API key — and --speech file speaks WAV recordings you supply. Captions are there either way. A selectable track is the default; pass --subtitles hard to burn them into the pixels, which is what keeps them visible in browsers, social feeds, and documentation embeds.</p>
           </details>
           <details>
             <summary>Does recording contact a cloud service?</summary>
@@ -366,7 +366,7 @@
         <div class="container">
           <p class="footer__statement">A demo should be evidence, not a memory.</p>
           <div class="footer__meta">
-            <span>PlainTake 1.2.1 · Proprietary licence · Your output remains yours.</span>
+            <span>PlainTake 1.3.0 · Proprietary licence · Your output remains yours.</span>
             <nav class="footer__links" aria-label="Footer navigation">
               <a href="https://github.com/plaintake/plaintake/releases/latest">Releases</a>
               <a href="https://github.com/plaintake/plaintake#readme">Guide</a>
