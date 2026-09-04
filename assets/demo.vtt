@@ -1,36 +1,59 @@
 WEBVTT
 
-open-release-desk
-00:00:00.000 --> 00:00:03.478
-Start with the release
-workspace in a real browser.
+download-install
+00:00:05.379 --> 00:00:08.535
+Download the tarball
+and run the installer.
 
-prepare-release
-00:00:03.558 --> 00:00:07.458
-The synthetic pointer moves
-to each declared target.
+doctor
+00:00:08.615 --> 00:00:11.840
+plaintake doctor checks
+FFmpeg and Chromium.
 
-enter-version
-00:00:07.538 --> 00:00:11.213
-Camera zoom follows the
-same target rectangle.
+scenario-file
+00:00:13.178 --> 00:00:17.157
+Define steps, captions and
+chapters with defineDemo.
 
-request-approval
-00:00:11.293 --> 00:00:14.718
-Submit the release for
-a final human decision.
+assert-outcome
+00:00:17.237 --> 00:00:21.799
+Declare an assert — a wrong
+end state fails the run.
 
-frame-human-review
-00:00:14.798 --> 00:00:18.548
-PlainTake hands the visible
-browser to a person.
+step-anatomy
+00:00:21.879 --> 00:00:25.654
+A step names its target
+and action: click or type.
 
-approve-release
-00:00:21.386 --> 00:00:25.790
-The person approves, and the
-recorded scenario can continue.
+validate
+00:00:26.977 --> 00:00:30.537
+One command checks the
+scenario before filming.
 
-show-approved-state
-00:00:25.870 --> 00:00:29.620
-The final state is visible
-and ready to verify.
+run-command
+00:00:31.942 --> 00:00:35.250
+Point plaintake run at
+the scenario and your app.
+
+rendered
+00:00:35.330 --> 00:00:38.830
+Chromium records; FFmpeg renders the film.
+
+watch-output
+00:00:38.910 --> 00:00:45.372
+This is the exact file the run wrote.
+
+bundle-tree
+00:00:46.748 --> 00:00:50.978
+Captions, a manifest and a
+trace ship beside the MP4.
+
+verify
+00:00:51.058 --> 00:00:55.133
+Verify re-checks every
+artifact against the manifest.
+
+whole-loop
+00:00:55.213 --> 00:00:59.038
+Install, write, validate,
+run — then ship the video.
