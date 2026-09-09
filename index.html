@@ -6,7 +6,7 @@
     <title>PlainTake — Local Browser Demo Video Recorder</title>
     <meta
       name="description"
-      content="Record deterministic browser demo videos from TypeScript scenarios. PlainTake runs locally, renders with FFmpeg, burns in captions, and produces a verifiable evidence bundle."
+      content="Record deterministic browser demo videos from TypeScript scenarios. PlainTake runs locally, renders with FFmpeg, adds a selectable caption track (burn-in optional), and produces a verifiable evidence bundle."
     />
     <meta
       name="keywords"
@@ -57,7 +57,7 @@
           "sameAs": ["https://www.youtube.com/@plainlabdev"]
         },
         "operatingSystem": "macOS, Linux",
-        "softwareVersion": "1.7.0",
+        "softwareVersion": "1.9.0",
         "description": "A local developer tool that records replayable Chromium demo videos from TypeScript scenarios and renders captioned MP4 files with FFmpeg.",
         "url": "https://plaintake.github.io/",
         "downloadUrl": "https://github.com/plaintake/plaintake/releases/latest",
@@ -66,7 +66,11 @@
         "featureList": [
           "TypeScript scenario DSL",
           "1920 by 1080 Chromium capture",
-          "Burned-in and sidecar captions",
+          "Selectable or burned-in captions, plus SRT and VTT sidecars",
+          "Multiple actors, each with their own browser context",
+          "Full-frame narrated explain scenes cut into the recording",
+          "Step spotlight highlighting",
+          "9:16 and 1:1 re-cuts without re-recording",
           "Optional spoken narration from a local voice model or your own audio",
           "Synthetic cursor and target-driven camera",
           "Human-in-the-loop browser handoff",
@@ -110,7 +114,7 @@
             <a class="button button--primary button--small" href="https://github.com/plaintake/plaintake/releases/latest">Download</a>
           </nav>
 
-          <a class="button button--primary button--small nav__mobile-cta" href="https://github.com/plaintake/plaintake/releases/latest" aria-label="Download PlainTake 1.7.0">Download</a>
+          <a class="button button--primary button--small nav__mobile-cta" href="https://github.com/plaintake/plaintake/releases/latest" aria-label="Download PlainTake 1.9.0">Download</a>
         </div>
       </header>
 
@@ -126,7 +130,7 @@
               <span aria-hidden="true" data-type-command="plaintake run demo.ts"></span>
             </p>
             <div class="hero__actions">
-              <a class="button button--primary" href="https://github.com/plaintake/plaintake/releases/latest">Download 1.7.0</a>
+              <a class="button button--primary" href="https://github.com/plaintake/plaintake/releases/latest">Download 1.9.0</a>
               <a class="button" href="https://plainlab.gumroad.com/l/plaintake">Buy Pro</a>
             </div>
             <p class="hero__note">Free for commercial use. No account. No cloud renderer. More demo videos on <a href="https://www.youtube.com/@plainlabdev">YouTube</a>.</p>
@@ -257,7 +261,7 @@
             </div>
             <div class="spec-row">
               <dt>Captions</dt>
-              <dd>Hard-burned by default; SRT and VTT sidecars</dd>
+              <dd>Selectable caption track by default; burn-in on request; SRT and VTT sidecars</dd>
               <dd class="spec-note">silent unless narrated</dd>
             </div>
             <div class="spec-row">
@@ -317,6 +321,10 @@
               <li>SRT and VTT sidecar files on every run</li>
               <li>Narrate every caption — a local voice model or your own audio</li>
               <li>MP4 chapter markers to skip between steps</li>
+              <li>Multiple actors, each with their own browser context</li>
+              <li>Cut away to a full-frame, narrated explain scene mid-recording</li>
+              <li>Spotlight a step with <code>highlight</code></li>
+              <li>Re-cut to 9:16 or 1:1 without re-recording</li>
               <li>Three-second “Made with PlainTake” closing credit</li>
             </ul>
             <a class="button tier__action" href="https://github.com/plaintake/plaintake/releases/latest">Download free</a>
@@ -330,6 +338,7 @@
             <ul>
               <li>Zoom the camera toward each declared step target</li>
               <li>Your video without our credit — or your own outro text and colours</li>
+              <li>The intro card restyled to your branding</li>
             </ul>
             <a class="button button--primary tier__action" href="https://plainlab.gumroad.com/l/plaintake">Buy Pro</a>
           </article>
@@ -366,7 +375,7 @@
         <div class="container">
           <p class="footer__statement">A demo should be evidence, not a memory.</p>
           <div class="footer__meta">
-            <span>PlainTake 1.7.0 · Proprietary licence · Your output remains yours.</span>
+            <span>PlainTake 1.9.0 · Proprietary licence · Your output remains yours.</span>
             <nav class="footer__links" aria-label="Footer navigation">
               <a href="https://github.com/plaintake/plaintake/releases/latest">Releases</a>
               <a href="https://github.com/plaintake/plaintake#readme">Guide</a>
