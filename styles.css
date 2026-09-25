@@ -6,7 +6,52 @@
  * responsive: pass (34, 49) · mobile: pass (50–57) · icons: pass (30)
  */
 @import url("./tokens.css");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+/* Self-hosted latin subsets, preloaded in index.html — same-origin, so they arrive with
+ * the stylesheet and first paint uses them. font-display: block is the safety net: a font
+ * that is still late renders invisible (up to 3s) rather than flashing a fallback typeface
+ * and reflowing. Inter and Space Grotesk are variable files covering both declared weights
+ * each. All three families are SIL Open Font License 1.1.
+ */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("assets/fonts/inter-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url("assets/fonts/inter-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url("assets/fonts/space-grotesk-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url("assets/fonts/space-grotesk-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("assets/fonts/jetbrains-mono-latin-400.woff2") format("woff2");
+}
 
 *,
 *::before,
