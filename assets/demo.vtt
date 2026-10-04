@@ -1,59 +1,70 @@
 WEBVTT
 
-download-install
-00:00:05.379 --> 00:00:08.535
-Download the tarball
-and run the installer.
+download
+00:00:07.690 --> 00:00:12.599
+Start from the release download: the
+tarball, its checksums and the installer.
 
-doctor
-00:00:08.615 --> 00:00:11.840
-plaintake doctor checks
-FFmpeg and Chromium.
+checksum
+00:00:12.679 --> 00:00:16.404
+Check that the download is
+exactly what was published.
 
-scenario-file
-00:00:13.178 --> 00:00:17.157
-Define steps, captions and
-chapters with defineDemo.
+install
+00:00:16.484 --> 00:00:20.919
+The installer unpacks one
+self-contained tree and links plaintake.
 
-assert-outcome
-00:00:17.237 --> 00:00:21.799
-Declare an assert — a wrong
-end state fails the run.
-
-step-anatomy
-00:00:21.879 --> 00:00:25.654
-A step names its target
-and action: click or type.
+version
+00:00:21.819 --> 00:00:26.212
+Put it on your PATH,
+and plaintake is ready.
 
 validate
-00:00:26.977 --> 00:00:30.537
-One command checks the
-scenario before filming.
+00:00:27.909 --> 00:00:33.715
+A demo is one TypeScript file. validate
+checks it before any browser starts.
 
 run-command
-00:00:31.942 --> 00:00:35.250
-Point plaintake run at
-the scenario and your app.
+00:00:35.033 --> 00:00:40.304
+One command films it in Chromium
+and renders it with FFmpeg.
+
+scenario-file
+00:00:41.648 --> 00:00:46.802
+While it records — this is the file
+it follows, defineDemo and all.
+
+step-anatomy
+00:00:46.882 --> 00:00:51.487
+A step names its target, its action
+and the caption you are reading.
+
+assert-outcome
+00:00:51.567 --> 00:00:55.917
+An assert fails the run if the
+app ends up in the wrong state.
 
 rendered
-00:00:35.330 --> 00:00:38.830
-Chromium records; FFmpeg renders the film.
-
-watch-output
-00:00:38.910 --> 00:00:45.372
-This is the exact file the run wrote.
+00:00:57.247 --> 00:01:01.348
+Done: one MP4, captions burned in.
 
 bundle-tree
-00:00:46.748 --> 00:00:50.978
-Captions, a manifest and a
-trace ship beside the MP4.
+00:01:01.428 --> 00:01:05.153
+Captions, a manifest and
+a trace ship beside it.
+
+watch-output
+00:01:05.182 --> 00:01:08.533
+And this is the exact
+file that run just wrote.
 
 verify
-00:00:51.058 --> 00:00:55.133
-Verify re-checks every
+00:01:19.477 --> 00:01:23.558
+verify re-checks every
 artifact against the manifest.
 
 whole-loop
-00:00:55.213 --> 00:00:59.038
-Install, write, validate,
-run — then ship the video.
+00:01:23.638 --> 00:01:27.363
+Write, validate, run, verify
+— then ship the video.

@@ -60,7 +60,7 @@
           "sameAs": ["https://www.youtube.com/@plainlabdev", "https://www.tiktok.com/@plainlab"]
         },
         "operatingSystem": "macOS, Linux, Docker",
-        "softwareVersion": "1.26.2",
+        "softwareVersion": "1.27.0",
         "description": "A local developer tool that records replayable Chromium demo videos from TypeScript scenarios and renders captioned MP4 files with FFmpeg.",
         "url": "https://plaintake.github.io/",
         "downloadUrl": "https://github.com/plaintake/plaintake/releases/latest",
@@ -71,6 +71,7 @@
           "1920 by 1080 Chromium capture",
           "Selectable or burned-in captions, plus SRT and VTT sidecars",
           "Multiple actors, each with their own browser context",
+          "Live terminal recording, alone or alongside the browser in one video",
           "Full-frame narrated explain scenes cut into the recording",
           "Step spotlight highlighting",
           "9:16 and 1:1 re-cuts without re-recording",
@@ -117,7 +118,7 @@
             <a class="button button--primary button--small" href="https://github.com/plaintake/plaintake/releases/latest">Download</a>
           </nav>
 
-          <a class="button button--primary button--small nav__mobile-cta" href="https://github.com/plaintake/plaintake/releases/latest" aria-label="Download PlainTake 1.26.2">Download</a>
+          <a class="button button--primary button--small nav__mobile-cta" href="https://github.com/plaintake/plaintake/releases/latest" aria-label="Download PlainTake 1.27.0">Download</a>
         </div>
       </header>
 
@@ -133,7 +134,7 @@
               <span aria-hidden="true" data-type-command="plaintake run demo.ts"></span>
             </p>
             <div class="hero__actions">
-              <a class="button button--primary" href="https://github.com/plaintake/plaintake/releases/latest">Download 1.26.2</a>
+              <a class="button button--primary" href="https://github.com/plaintake/plaintake/releases/latest">Download 1.27.0</a>
               <a class="button" href="https://plainlab.gumroad.com/l/plaintake">Buy Pro</a>
             </div>
             <p class="hero__note">Free for commercial use. No account. No cloud renderer. More demo videos on <a href="https://www.youtube.com/@plainlabdev">YouTube</a> and <a href="https://www.tiktok.com/@plainlab">TikTok</a>.</p>
@@ -152,13 +153,13 @@
               preload="metadata"
               poster="assets/demo-poster.webp"
               fetchpriority="high"
-              aria-label="PlainTake quickstart tutorial — install, write the scenario, validate, run, and the output bundle — with spoken narration, a selectable caption track, a synthetic cursor, and a closing Made with PlainTake credit. The tutorial itself was recorded by PlainTake."
+              aria-label="PlainTake quickstart tutorial, in a real terminal and a real browser — install, validate, record, watch the result and verify the bundle — with spoken narration, a selectable caption track, a synthetic cursor, and a closing Made with PlainTake credit. The tutorial itself was recorded by PlainTake."
             >
               <source src="assets/demo.mp4" type="video/mp4" />
               <track kind="captions" src="assets/demo.vtt" srclang="en" label="English" />
             </video>
             <figcaption class="sr-only">
-              A sixty-two-second PlainTake quickstart recorded at 1920 by 1080 and 30 frames per second — install, write the scenario, validate, run, and the verifiable output bundle — with spoken narration, a selectable caption track, a synthetic cursor, and a closing “Made with PlainTake” credit card. The whole tutorial was recorded by PlainTake itself.
+              An eighty-eight-second PlainTake quickstart recorded at 1920 by 1080 and 30 frames per second, cutting between a live terminal and a browser — the release tarball checked and installed, a scenario validated, recorded and played back, and the output bundle verified — with spoken narration, a selectable caption track, a synthetic cursor, and a closing “Made with PlainTake” credit card. Every command on screen really ran, and the whole tutorial was recorded by PlainTake itself.
             </figcaption>
           </figure>
         </section>
@@ -379,7 +380,7 @@
         <div class="container">
           <p class="footer__statement">A demo should be evidence, not a memory.</p>
           <div class="footer__meta">
-            <span>PlainTake 1.26.2 · Proprietary licence · Your output remains yours.</span>
+            <span>PlainTake 1.27.0 · Proprietary licence · Your output remains yours.</span>
             <nav class="footer__links" aria-label="Footer navigation">
               <a href="https://github.com/plaintake/plaintake/releases/latest">Releases</a>
               <a href="https://github.com/plaintake/plaintake#readme">Guide</a>
