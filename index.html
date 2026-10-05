@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>PlainTake — Local Browser Demo Video Recorder</title>
+    <title>PlainTake — Demo videos as code</title>
     <meta
       name="description"
-      content="Record deterministic browser demo videos from TypeScript scenarios. PlainTake runs locally, renders with FFmpeg, adds a selectable caption track (burn-in optional), and produces a verifiable evidence bundle."
+      content="Write a demo once in TypeScript. PlainTake records, narrates and captions it on your machine, and re-records it when your UI changes — for docs, YouTube and Shorts."
     />
     <meta
       name="keywords"
@@ -26,10 +26,10 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="PlainTake" />
-    <meta property="og:title" content="PlainTake — Demo videos you can re-run" />
+    <meta property="og:title" content="PlainTake — Demo videos as code" />
     <meta
       property="og:description"
-      content="Turn a committed TypeScript scenario into a captioned browser demo and a SHA-256-verifiable evidence bundle—locally."
+      content="Write a demo once in TypeScript. PlainTake records, narrates and captions it on your machine, and re-records it when your UI changes — for docs, YouTube and Shorts."
     />
     <meta property="og:url" content="https://plaintake.github.io/" />
     <meta property="og:image" content="https://plaintake.github.io/assets/logo.png" />
@@ -41,10 +41,10 @@
     <meta property="og:video:width" content="1920" />
     <meta property="og:video:height" content="1080" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="PlainTake — Demo videos you can re-run" />
+    <meta name="twitter:title" content="PlainTake — Demo videos as code" />
     <meta
       name="twitter:description"
-      content="Local browser demo recording from committed TypeScript scenarios, with captions and verifiable artifacts."
+      content="Write a demo once in TypeScript. PlainTake records, narrates and captions it on your machine, and re-records it when your UI changes — for docs, YouTube and Shorts."
     />
     <meta name="twitter:image" content="https://plaintake.github.io/assets/logo.png" />
 
@@ -60,8 +60,8 @@
           "sameAs": ["https://www.youtube.com/@plainlabdev", "https://www.tiktok.com/@plainlab"]
         },
         "operatingSystem": "macOS, Linux, Docker",
-        "softwareVersion": "1.28.0",
-        "description": "A local developer tool that records replayable Chromium demo videos from TypeScript scenarios and renders captioned MP4 files with FFmpeg.",
+        "softwareVersion": "1.27.0",
+        "description": "Write a demo once in TypeScript. PlainTake records, narrates and captions it on your machine, and re-records it when your UI changes — for docs, YouTube and Shorts.",
         "url": "https://plaintake.github.io/",
         "downloadUrl": "https://github.com/plaintake/plaintake/releases/latest",
         "license": "https://github.com/plaintake/plaintake/blob/main/LICENSE",
@@ -75,7 +75,6 @@
           "Full-frame narrated explain scenes cut into the recording",
           "Step spotlight highlighting",
           "9:16 and 1:1 re-cuts without re-recording",
-          "TikTok and YouTube Shorts layout with a hook and word-by-word captions",
           "Optional spoken narration from a local voice model or your own audio",
           "Synthetic cursor and target-driven camera",
           "Human-in-the-loop browser handoff",
@@ -119,14 +118,14 @@
             <a class="button button--primary button--small" href="https://github.com/plaintake/plaintake/releases/latest">Download</a>
           </nav>
 
-          <a class="button button--primary button--small nav__mobile-cta" href="https://github.com/plaintake/plaintake/releases/latest" aria-label="Download PlainTake 1.28.0">Download</a>
+          <a class="button button--primary button--small nav__mobile-cta" href="https://github.com/plaintake/plaintake/releases/latest" aria-label="Download PlainTake 1.27.0">Download</a>
         </div>
       </header>
 
       <main id="main">
         <section class="hero container" id="top">
           <div class="hero__copy">
-            <h1>Replayable demos, recorded locally.</h1>
+            <h1>Demo videos as code.</h1>
             <p class="hero__lede">
               PlainTake turns a committed TypeScript scenario into one captioned MP4 and a verifiable evidence bundle. Chromium records it. FFmpeg renders it. Your app stays on your machine.
             </p>
@@ -135,7 +134,7 @@
               <span aria-hidden="true" data-type-command="plaintake run demo.ts"></span>
             </p>
             <div class="hero__actions">
-              <a class="button button--primary" href="https://github.com/plaintake/plaintake/releases/latest">Download 1.28.0</a>
+              <a class="button button--primary" href="https://github.com/plaintake/plaintake/releases/latest">Download 1.27.0</a>
               <a class="button" href="https://plainlab.gumroad.com/l/plaintake">Buy Pro</a>
             </div>
             <p class="hero__note">Free for commercial use. No account. No cloud renderer. More demo videos on <a href="https://www.youtube.com/@plainlabdev">YouTube</a> and <a href="https://www.tiktok.com/@plainlab">TikTok</a>.</p>
@@ -330,7 +329,6 @@
               <li>Cut away to a full-frame, narrated explain scene mid-recording</li>
               <li>Spotlight a step with <code>highlight</code></li>
               <li>Re-cut to 9:16 or 1:1 without re-recording</li>
-              <li>TikTok and Shorts layout: a hook up top, captions lit word by word</li>
               <li>Three-second “Made with PlainTake” closing credit</li>
             </ul>
             <a class="button tier__action" href="https://github.com/plaintake/plaintake/releases/latest">Download free</a>
@@ -382,7 +380,7 @@
         <div class="container">
           <p class="footer__statement">A demo should be evidence, not a memory.</p>
           <div class="footer__meta">
-            <span>PlainTake 1.28.0 · Proprietary licence · Your output remains yours.</span>
+            <span>PlainTake 1.27.0 · Proprietary licence · Your output remains yours.</span>
             <nav class="footer__links" aria-label="Footer navigation">
               <a href="https://github.com/plaintake/plaintake/releases/latest">Releases</a>
               <a href="https://github.com/plaintake/plaintake#readme">Guide</a>

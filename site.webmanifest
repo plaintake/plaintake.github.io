@@ -1,7 +1,7 @@
 {
   "name": "PlainTake",
   "short_name": "PlainTake",
-  "description": "Local, replayable browser demo videos from TypeScript scenarios.",
+  "description": "Write a demo once in TypeScript. PlainTake records, narrates and captions it on your machine, and re-records it when your UI changes — for docs, YouTube and Shorts.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f8f9fc",
