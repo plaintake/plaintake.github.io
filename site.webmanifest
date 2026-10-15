@@ -1,7 +1,7 @@
 {
   "name": "PlainTake",
   "short_name": "PlainTake",
-  "description": "Write the demo in TypeScript, or let your AI agent write it. PlainTake records your real app, narrates and captions it, and re-records it when your UI changes.",
+  "description": "Your AI writes a narrated product tour of your website, terminal or Mac app. PlainTake records it — and re-records it whenever your UI changes, no AI needed.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f8f9fc",
